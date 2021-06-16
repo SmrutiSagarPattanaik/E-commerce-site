@@ -1,0 +1,13 @@
+<div class="primary-container">
+    <ng-container *ngFor="let item of (listOfItems | filterItems: filterByItemName)">
+        <section class="single-item-content">
+            <div class="image-content">
+                <img [src]="item.imageUrl" alt="Item image" />
+            </div>
+            <div class="name-show-details">
+                <p class="item-name">Name: {{ item.name }}</p>
+                <a class="show-more-details" [routerLink]="'./' + item.id">details >></a>
+            </div>
+        </section>
+    </ng-container>
+</div>

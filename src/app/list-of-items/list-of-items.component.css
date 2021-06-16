@@ -1,0 +1,32 @@
+.primary-container {
+    max-width: 900px;
+    margin: auto;
+    text-align: center;
+  }
+  
+  .image-content {
+    padding-top: 10px;
+    width: 300px;
+  }
+  
+  .image-content img {
+    height: auto;
+    width: 100%;
+  }
+  
+  .single-item-content {
+    font: normal bold 18px "Roboto", sans-serif;
+    background-color: #c6ebf7;
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 10px;
+  }
+  
+  .show-more-details {
+    text-decoration: none;
+    color: #07b9f5;
+  }
+  
+  .show-more-details:hover {
+    color: #e90000;
+  }

@@ -1,0 +1,23 @@
+.primary-container {
+    max-width: 800px;
+    margin: auto;
+    text-align: center;
+}
+.website-title {
+    font: normal bold 60px "Roboto", sans-serif;
+    text-decoration: underline;
+    text-align: center;
+}
+
+.go-to-cart-button {
+    background-color:#ffffff ;
+    font: normal bold 18px Roboto, sans-serif;
+    color: #2dc2e7;
+    margin-bottom: 20px;
+}
+
+.go-to-cart-button:hover {
+    cursor: pointer;
+    background-color: #2dc2e7;
+    color: #000000;
+  }

@@ -1,0 +1,13 @@
+<div class="primary-container">
+    <h1 class="website-title">
+        E-MART
+    </h1>
+
+    <button class="go-to-cart-button" (click)="goToCart()">
+        Cart ({{totalItemsCountInCart}})
+    </button>
+
+    <app-search-bar (emitItemName)="storeItemName($event)"></app-search-bar>
+
+    <app-list-of-items [filterByItemName]="searchItemName"></app-list-of-items>
+</div>

@@ -1,0 +1,50 @@
+.primary-container {
+  margin: auto;
+  max-width: 800px;
+  text-align: center;
+}
+
+.increase-qty-button {
+  background-color:#ffffff ;
+  font: normal bold 18px Roboto, sans-serif;
+  color: #2dc2e7;
+  margin-right: 5px;
+}
+
+.increase-qty-button:hover {
+  cursor: pointer;
+  background-color: #2dc2e7;
+  color: #000000;
+}
+
+.decrease-qty-button {
+  background-color:#ffffff ;
+  font: normal bold 18px Roboto, sans-serif;
+  color: #2dc2e7;
+  padding: 1px 9px;
+}
+
+.decrease-qty-button:hover {
+  cursor: pointer;
+  background-color: #2dc2e7;
+  color: #000000;
+}
+
+.go-back-button {
+    background-color:#ffffff ;
+    font: normal bold 18px Roboto, sans-serif;
+    color: #2dc2e7;
+    margin-bottom: 20px;
+  }
+
+.go-back-button:hover {
+    cursor: pointer;
+    background-color: #2dc2e7;
+    color: #000000;
+  }
+
+.table-of-items-in-cart {
+    margin-top: 20px;
+    border: 1px solid #000000;
+    border-spacing: 30px;
+}

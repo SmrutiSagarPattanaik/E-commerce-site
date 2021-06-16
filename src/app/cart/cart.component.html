@@ -1,0 +1,33 @@
+<button class="go-back-button" (click)="goToBackPage()">
+    Back
+</button>
+<div class="primary-container">
+    <table class="table-of-items-in-cart" *ngIf="allItemsOfCart">
+        <thead>
+            <tr>
+                <th>Item Id</th>
+                <th>Item name</th>
+                <th>Item count</th>
+                <th>1 Item price</th>
+                <th>Total price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of allItemsOfCart">
+                <td>{{item.id }}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.count}}</td>
+                <td>{{item.price}}</td>
+                <td>{{item.price*item.count}}</td>
+                <button class="increase-qty-button" (click)="increaseQty([item.id,item.name,item.price,item.count])">
+                    +
+                </button>
+                <button class="decrease-qty-button" (click)="decreaseQty([item.id,item.name,item.price,item.count])">
+                    -
+                </button>
+            </tr>
+        </tbody>
+    </table>
+    <p *ngIf="!(allItemsOfCart)">You have no items in the cart !</p>
+
+</div>

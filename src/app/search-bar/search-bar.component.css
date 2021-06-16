@@ -1,0 +1,17 @@
+.primary-container {
+    max-width: 600px;
+    margin: auto;
+    margin-bottom: 20px;
+  }
+  
+  .search-bar-section {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .search-bar-section input {
+    width: 70%;
+    height: 30px;
+    font-size: 18px;
+  }
+  

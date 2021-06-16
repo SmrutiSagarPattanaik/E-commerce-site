@@ -1,0 +1,26 @@
+<div class="primary-container">
+    <button class="go-back-button" (click)="goToBackPage()">
+        Back
+    </button>
+
+    <button class="go-to-cart-button" (click)="goToCart()">
+        Cart ({{totalItemsCountInCart}})
+    </button>
+
+    <section class="single-item-content" *ngFor="
+    let itemDetails of listOfItems
+      | filterItemDetails: selectedItemId
+  ">
+        <div class="image-content">
+            <img [src]="itemDetails.imageUrl" alt="Item image" />
+        </div>
+
+        <p>Unique Id: {{ itemDetails.id }}</p>
+        <p>Name: {{ itemDetails.name }}</p>
+        <p>Description:{{ itemDetails.description }}</p>
+        <p>Price: INR {{ itemDetails.price }}</p>
+
+        <button class="add-to-cart-button"
+            (click)="sendItemToCart([itemDetails.id, itemDetails.name, itemDetails.price, 1])">Add to cart>></button>
+    </section>
+</div>

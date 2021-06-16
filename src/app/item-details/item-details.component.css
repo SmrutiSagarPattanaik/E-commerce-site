@@ -1,0 +1,62 @@
+.primary-container {
+    max-width: 900px;
+    margin: auto;
+    text-align: center;
+  }
+  
+  .image-content {
+    padding-top: 10px;
+    width: 500px;
+    margin: auto;
+  }
+  
+  .image-content img {
+    height: auto;
+    width: 500px;
+  }
+  
+  .single-item-content {
+    font: normal bold 18px "Roboto", sans-serif;
+    background-color: #c6ebf7;
+  }
+
+  .go-to-cart-button {
+    background-color:#ffffff ;
+    font: normal bold 18px Roboto, sans-serif;
+    color: #2dc2e7;
+    margin-bottom: 20px;
+    display: block;
+    margin: 0 auto 20px;
+  }
+
+  .go-to-cart-button:hover {
+    cursor: pointer;
+    background-color: #2dc2e7;
+    color: #000000;
+  }
+
+  .go-back-button {
+    background-color:#ffffff ;
+    font: normal bold 18px Roboto, sans-serif;
+    color: #2dc2e7;
+    margin-bottom: 20px;
+  }
+
+  .go-back-button:hover {
+    cursor: pointer;
+    background-color: #2dc2e7;
+    color: #000000;
+  }
+
+  .add-to-cart-button {
+    background-color:#ffffff ;
+    font: normal bold 18px Roboto, sans-serif;
+    color: #2dc2e7;
+    margin-bottom: 20px;
+  }
+
+  .add-to-cart-button:hover {
+    cursor: pointer;
+    background-color: #2dc2e7;
+    color: #000000;
+  }
