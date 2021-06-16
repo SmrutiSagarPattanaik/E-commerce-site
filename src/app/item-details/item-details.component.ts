@@ -18,6 +18,20 @@ export class ItemDetailsComponent implements OnInit, OnDestroy {
   listOfItems = itemDetailsList;
   totalItemsCountInCart: number;
 
+  constructor(private router: Router, private route: ActivatedRoute, private _location: Location, private cart: CheckoutCartService) { }
+
+  ngOnInit(): void {
+    this.sub = this.route.params.subscribe((params) => {
+      this.selectedItemId = params['id'];
+    });
+
+    this.cart.allItemsCountInCart.subscribe(count => this.totalItemsCountInCart = count);
+  }
+
+  ngOnDestroy() {
+    this.sub.unsubscribe();
+  }
+
 
   goToBackPage() {
     this._location.back();
@@ -37,18 +51,6 @@ export class ItemDetailsComponent implements OnInit, OnDestroy {
     this.cart.addItemToCart(itemObj);
   }
 
-  constructor(private router: Router, private route: ActivatedRoute, private _location: Location, private cart: CheckoutCartService) { }
 
-  ngOnInit(): void {
-    this.sub = this.route.params.subscribe((params) => {
-      this.selectedItemId = params['id'];
-    });
-
-    this.cart.allItemsCountInCart.subscribe(count => this.totalItemsCountInCart = count);
-  }
-
-  ngOnDestroy() {
-    this.sub.unsubscribe();
-  }
 
 }

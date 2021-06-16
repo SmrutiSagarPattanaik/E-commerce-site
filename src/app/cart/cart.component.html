@@ -19,10 +19,10 @@
                 <td>{{item.count}}</td>
                 <td>{{item.price}}</td>
                 <td>{{item.price*item.count}}</td>
-                <button class="increase-qty-button" (click)="increaseQty([item.id,item.name,item.price,item.count])">
+                <button class="increase-qty-button" (click)="updateItemQty(item,'+')">
                     +
                 </button>
-                <button class="decrease-qty-button" (click)="decreaseQty([item.id,item.name,item.price,item.count])">
+                <button class="decrease-qty-button" (click)="updateItemQty(item,'-')">
                     -
                 </button>
             </tr>

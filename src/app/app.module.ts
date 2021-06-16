@@ -5,9 +5,9 @@ import { AppComponent } from './app.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { ListOfItemsComponent } from './list-of-items/list-of-items.component';
 import { HomeComponent } from './home/home.component';
-import { FilterItemsPipe } from './filter-items.pipe';
+import { FilterItemsPipe } from './filters/filter-items.pipe';
 import { ItemDetailsComponent } from './item-details/item-details.component';
-import { FilterItemDetailsPipe } from './filter-item-details.pipe';
+import { FilterItemDetailsPipe } from './filters/filter-item-details.pipe';
 import { CartComponent } from './cart/cart.component';
 
 @NgModule({

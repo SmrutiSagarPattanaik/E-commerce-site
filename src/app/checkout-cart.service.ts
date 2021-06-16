@@ -57,15 +57,11 @@ export class CheckoutCartService {
     }
     this.totalItemsCount -= 1;
     this.allItemsCountInCart.next(this.totalItemsCount);
-    if (!this.totalItemsCount) {
-      this.itemsArrayOfCart.next(null);
-    } else {
-      this.itemsArrayOfCart.next(this.allItemsInCart);
-    }
+    (!this.totalItemsCount) ? this.itemsArrayOfCart.next(null) : this.itemsArrayOfCart.next(this.allItemsInCart);
   }
 
   addItemToCart(itemObj: itemInCart) {
-    if (this.allItemsInCart.length !== 0 && this.allItemsInCart[0]['price'] === 0) {
+    if (this.allItemsInCart.length && !this.allItemsInCart[0]['price']) {
       this.allItemsInCart.shift();
     }
 

@@ -11,6 +11,11 @@ export class HomeComponent implements OnInit {
 
   searchItemName = '';
 
+  constructor(private router: Router, private cart: CheckoutCartService) { }
+
+  ngOnInit(): void {
+  }
+
   totalItemsCountInCart = this.cart.totalItemsCount;
 
   storeItemName(itemName: string) {
@@ -21,9 +26,6 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['/cart']);
   }
 
-  constructor(private router: Router, private cart: CheckoutCartService) { }
 
-  ngOnInit(): void {
-  }
 
 }

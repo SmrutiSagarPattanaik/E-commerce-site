@@ -18,24 +18,16 @@ export class CartComponent implements OnInit {
 
   allItemsOfCart: itemInCart[];
 
-  increaseQty(item: [string, string, number, number]) {
-    let itemObj = {
-      id: item[0],
-      name: item[1],
-      price: item[2],
-      count: item[3]
-    }
-    this.cart.increaseItemCount(itemObj);
+  
+  constructor(private cart: CheckoutCartService, private _location: Location) {
+    this.getItemsFromCart();
   }
 
-  decreaseQty(item: [string, string, number, number]) {
-    let itemObj = {
-      id: item[0],
-      name: item[1],
-      price: item[2],
-      count: item[3]
-    }
-    this.cart.decreaseItemCount(itemObj);
+  ngOnInit(): void {
+  }
+
+  updateItemQty(item: itemInCart, action: string) {
+    action === '+' ? this.cart.increaseItemCount(item) : this.cart.decreaseItemCount(item);
   }
 
   goToBackPage() {
@@ -48,11 +40,5 @@ export class CartComponent implements OnInit {
     );
   }
 
-  constructor(private cart: CheckoutCartService, private _location: Location) {
-    this.getItemsFromCart();
-  }
-
-  ngOnInit(): void {
-  }
 
 }

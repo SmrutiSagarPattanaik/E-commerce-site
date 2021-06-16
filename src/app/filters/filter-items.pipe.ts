@@ -6,23 +6,24 @@ interface item {
   name: string;
   description: string;
   price: number;
-};
+}
 
 @Pipe({
-  name: 'filterItemDetails'
+  name: 'filterItems',
 })
-export class FilterItemDetailsPipe implements PipeTransform {
+export class FilterItemsPipe implements PipeTransform {
 
   transform(listOfItems: item[], searchTerm: string): any {
     if (!listOfItems || !searchTerm) {
       return listOfItems;
     }
 
-    let result = listOfItems.filter(
-      (item) => item.id.toLowerCase().replace(' ', '').indexOf(searchTerm.toLowerCase().replace(' ', '')) !== -1
-    );
+    //replace() is used to remove space from item name.
+    //This enables to search for the item even if the user forgets to enter space in item name during searching the item.
 
-    console.log(result);
+    let result = listOfItems.filter(
+      (item) => item.name.toLowerCase().replace(' ', '').indexOf(searchTerm.toLowerCase().replace(' ', '')) !== -1
+    );
 
     return result;
   }

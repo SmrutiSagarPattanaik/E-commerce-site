@@ -9,12 +9,14 @@ export class SearchBarComponent implements OnInit {
 
   @Output() emitItemName = new EventEmitter<string>();
 
-  sendItemName(event: any) {
-    this.emitItemName.emit(event.target.value);
-  }
   constructor() { }
 
   ngOnInit(): void {
   }
+
+  sendItemName(event: any) {
+    this.emitItemName.emit(event.target.value);
+  }
+
 
 }
