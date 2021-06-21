@@ -2,7 +2,7 @@
     <section class="label-and-input-field-section">
         <label>{{label}}</label>
 
-        <input type="email" [formControl]="control" class="input-field" [ngClass]="{'error-in-input': showErrors()}">
+        <input type="email" [formControl]="control" class="input-field" [ngClass]="{'error-in-input': showErrors() || (control.touched && control.errors)}">
     </section>
 
     <ng-container *ngIf="control.errors">

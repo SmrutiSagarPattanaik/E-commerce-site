@@ -86,3 +86,7 @@
     background-color: #00ffff;
     cursor: pointer;
 }
+
+.error-in-input {
+    border-color: #ff0000;
+}

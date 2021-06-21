@@ -35,12 +35,18 @@
                 <section class="street-city">
                     <section class="street-label-field">
                         <label>Street</label>
-                        <input type="text" formControlName="street">
+                        <input type="text" formControlName="street" [ngClass]="
+                        {'error-in-input':
+                        this.addresses.controls[i]['controls']['street'].errors.required && 
+                        this.addresses.controls[i]['controls']['street'].touched}">
                     </section>
                     
                     <section class="city-label-field">
                         <label>City</label>
-                        <input type="text" formControlName="city">
+                        <input type="text" formControlName="city" [ngClass]="
+                        {'error-in-input':
+                        this.addresses.controls[i]['controls']['city'].errors.required && 
+                        this.addresses.controls[i]['controls']['city'].touched}">
                     </section>
 
                     <section class="add-remove-street-city-buttons">
