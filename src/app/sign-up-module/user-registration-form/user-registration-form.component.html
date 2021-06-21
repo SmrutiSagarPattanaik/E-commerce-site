@@ -37,7 +37,7 @@
                         <label>Street</label>
                         <input type="text" formControlName="street" [ngClass]="
                         {'error-in-input':
-                        this.addresses.controls[i]['controls']['street'].errors.required && 
+                        this.addresses.controls[i]['controls']['street'].errors && 
                         this.addresses.controls[i]['controls']['street'].touched}">
                     </section>
                     
@@ -45,7 +45,7 @@
                         <label>City</label>
                         <input type="text" formControlName="city" [ngClass]="
                         {'error-in-input':
-                        this.addresses.controls[i]['controls']['city'].errors.required && 
+                        this.addresses.controls[i]['controls']['city'].errors && 
                         this.addresses.controls[i]['controls']['city'].touched}">
                     </section>
 
@@ -67,8 +67,7 @@
                     Value is required for street.
                 </p>
                 <p *ngIf="this.addresses.controls[i]['controls']['street'].errors.pattern && 
-                this.addresses.controls[i]['controls']['street'].touched && 
-                this.addresses.controls[i]['controls']['street'].dirty" class="street-name-error">
+                this.addresses.controls[i]['controls']['street'].touched" class="street-name-error">
                     Dont use special characters for street name.
                 </p>
             </ng-container>
@@ -79,9 +78,8 @@
                     Value is required for city.
                 </p>
                 <p *ngIf="this.addresses.controls[i]['controls']['city'].errors.pattern && 
-                this.addresses.controls[i]['controls']['city'].touched && 
-                this.addresses.controls[i]['controls']['city'].dirty" class="city-name-error">
-                    Dont use special characters for city name.
+                this.addresses.controls[i]['controls']['city'].touched" class="city-name-error">
+                   Dont use special characters for city name.
                 </p>
             </ng-container>
 
