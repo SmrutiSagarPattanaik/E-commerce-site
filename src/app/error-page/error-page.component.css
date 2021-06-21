@@ -1,0 +1,8 @@
+.sign-in-message, .sign-in-page-link {
+    font: normal normal 25px Roboto,sans-serif;
+    text-decoration: none;
+}
+
+.primary-container {
+    text-align: center;
+}

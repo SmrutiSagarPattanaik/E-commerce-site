@@ -15,6 +15,7 @@ export class ItemDetailsComponent implements OnInit, OnDestroy {
 
   private sub: any;
   selectedItemId = '';
+  username='';
   listOfItems = itemDetailsList;
   totalItemsCountInCart: number;
 
@@ -23,13 +24,21 @@ export class ItemDetailsComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.sub = this.route.params.subscribe((params) => {
       this.selectedItemId = params['id'];
+      this.username = params['username'];
     });
-
     this.cart.allItemsCountInCart.subscribe(count => this.totalItemsCountInCart = count);
+    this.authenticateUser();
   }
 
   ngOnDestroy() {
     this.sub.unsubscribe();
+  }
+
+  authenticateUser() {
+    let userDetails = JSON.parse(localStorage.getItem(this.username));
+    if (!userDetails || !userDetails['isSignedIn']) {
+      this.router.navigate(['/error']);
+    }
   }
 
 

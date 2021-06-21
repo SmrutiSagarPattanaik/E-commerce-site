@@ -1,0 +1,65 @@
+.registration-form-title {
+    text-align: center;
+    text-decoration: underline;
+    font: normal bold 40px Roboto, sans-serif;
+}
+
+.register-button, .reset-button {
+    display: block;
+    margin: 0 auto 20px;
+    font: normal bold 15px Roboto, sans-serif; 
+    background-color: #ffffff;
+    padding: 5px;
+}
+
+.reset-button:hover {
+    cursor: pointer;
+    background: #00ffff;
+    color: #000000;
+}
+
+.register-button:hover {
+    cursor: pointer;
+}
+
+.password-confirm-error, .street-name-error, .city-name-error {
+    text-align: center;
+    color: red;
+    font: normal normal 14px Roboto, sans-serif;
+}
+
+.label-for-address {
+    font: normal normal 18px Roboto, sans-serif;
+    display: block;
+    text-align: center;
+}
+
+.street-city {
+    text-align: center;
+    font: normal normal 14px Roboto, sans-serif;
+    margin: 15px 0;
+}
+
+.street-city label {
+    margin-left: 20px;
+}
+
+.add-address-button,.remove-address-button {
+    margin-left: 15px;
+    background-color: #ffffff;
+}
+
+.remove-address-button {
+    padding: 1px 7px;
+}
+
+.add-address-button:hover ,.remove-address-button:hover {
+    cursor: pointer;
+    background-color: #00ffff;
+}
+
+.user-exist-error-message {
+    font: normal normal 15px Roboto, sans-serif;
+    text-align: center;
+    color: #ff0000;
+}

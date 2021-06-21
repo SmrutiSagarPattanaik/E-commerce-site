@@ -1,7 +1,13 @@
 <div class="primary-container">
-    <h1 class="website-title">
+    <p class="website-title">
         E-MART
-    </h1>
+    </p>
+
+    <p class="user-greeting">
+        Hello {{userName}}.
+    </p>
+
+    <a (click)="onClickSignOutLink()" class="signout-link">Sign Out>></a>
 
     <button class="go-to-cart-button" (click)="goToCart()">
         Cart ({{totalItemsCountInCart}})

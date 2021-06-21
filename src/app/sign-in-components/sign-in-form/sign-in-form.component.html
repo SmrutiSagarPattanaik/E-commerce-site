@@ -1,0 +1,46 @@
+<h1 class="sign-in-title">SignIn</h1>
+
+<form [formGroup]="signInForm" (ngSubmit)="signIn()">
+
+    <section class="username-section">
+        <label>User Name*: </label>
+        <input type="text" formControlName="userName">
+    </section>
+
+    <section class="password-section">
+        <label>Password*: </label>
+        <input type="password" formControlName="password">
+    </section>
+
+    <p *ngIf="!UserExist" class="error-messages">
+        Check userName or password. If new user then sign up.
+    </p>
+
+    <button [disabled]="signInForm.invalid" class="sign-in-button" type="submit">
+        Sign In
+    </button>
+
+    <button class="sign-up-button" type="button" 
+    (click)="goToRegisterPage()">
+        Sign Up
+    </button>
+
+    <ng-container *ngIf="signInForm.controls.userName.errors">
+        <p class="error-messages"
+        *ngIf="signInForm.controls.userName.errors.required &&
+        signInForm.controls.userName.touched &&
+        signInForm.controls.userName.dirty">
+            username required.
+        </p>
+    </ng-container>
+
+    <ng-container *ngIf="signInForm.controls.password.errors">
+        <p class="error-messages"
+        *ngIf="signInForm.controls.password.errors.required &&
+        signInForm.controls.password.touched &&
+        signInForm.controls.password.dirty">
+            password required.
+        </p>
+    </ng-container>
+
+</form>

@@ -9,6 +9,11 @@
     text-align: center;
 }
 
+.user-greeting {
+    font: normal bold 20px "Roboto", sans-serif;
+    text-align: center;
+}
+
 .go-to-cart-button {
     background-color:#ffffff ;
     font: normal bold 18px Roboto, sans-serif;
@@ -20,4 +25,17 @@
     cursor: pointer;
     background-color: #2dc2e7;
     color: #000000;
-  }
+}
+
+.signout-link {
+    color: #ff0000;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 20px;
+    font: normal bold 15px Roboto, sans-serif;
+}
+
+.signout-link:hover {
+    cursor: pointer;
+}
+

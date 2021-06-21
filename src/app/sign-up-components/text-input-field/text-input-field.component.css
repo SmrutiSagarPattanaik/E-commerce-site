@@ -1,0 +1,22 @@
+.primary-container {
+    max-width: 700px;
+    margin: auto;
+    text-align: center;
+}
+
+.input-field {
+    width: 100%;
+}
+
+.label-and-input-field-section {
+    margin-bottom: 25px;
+    font: normal normal 18px Roboto, sans-serif;
+}
+
+.error-in-input {
+    border-color: #ff0000;
+}
+
+.error-message {
+    color: #ff0000;
+}
