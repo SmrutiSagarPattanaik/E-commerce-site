@@ -1,0 +1,19 @@
+<div class="primary-container">
+    <section class="label-and-input-field-section">
+        <label>{{label}}</label>
+
+        <input type="email" [formControl]="control" class="input-field" [ngClass]="{'error-in-input': showErrors()}">
+    </section>
+
+    <ng-container *ngIf="control.errors">
+        <section *ngIf="control.touched && control.errors.required" class="error-message">
+            <p>Value is required</p>
+        </section>
+    </ng-container>
+
+    <ng-container *ngIf="showErrors()">
+        <section *ngIf="control.errors.email" class="error-message">
+            <p>Enter valid Email address like abc12@gmail.com</p>
+        </section>
+    </ng-container>
+</div>

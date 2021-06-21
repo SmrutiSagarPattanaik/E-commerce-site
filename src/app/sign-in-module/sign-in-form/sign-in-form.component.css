@@ -1,0 +1,30 @@
+.username-section, .password-section {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.sign-in-button, .sign-up-button {
+    display: block;
+    border: solid;
+    margin: auto;
+    margin-bottom: 20px;
+    background-color: #ffffff;
+    font: normal normal 15px Roboto,sans-serif;
+}
+
+.sign-in-button:hover, .sign-up-button:hover {
+    cursor: pointer;
+    background-color: #00ffffff;
+}
+
+.sign-in-title {
+    text-align: center;
+    font: normal bold 30px Roboto,sans-serif;
+    text-decoration: underline;
+}
+
+.error-messages {
+    color: #ff0000;
+    font: normal bold 15px Roboto,sans-serif;
+    text-align: center;
+}
