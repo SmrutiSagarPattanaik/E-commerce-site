@@ -2,31 +2,29 @@
     <section class="label-and-input-field-section">
         <label>{{label}}</label>
 
-        <input type="text" [formControl]="control" class="input-field" [ngClass]="{'error-in-input': showErrors() || (control.touched && control.errors)}">
+        <input type="text" [formControl]="control" class="input-field" [ngClass]="{'error-in-input': control.touched && control.errors}">
     </section>
 
     <ng-container *ngIf="control.errors">
         <section *ngIf="control.touched && control.errors.required" class="error-message">
             <p>Value is required</p>
         </section>
-    </ng-container>
-
-    <ng-container *ngIf="showErrors()">
-        <section *ngIf="control.errors.minlength" class="error-message">
+        
+        <section *ngIf="control.errors.minlength && control.touched" class="error-message">
             <p>
                 Value is {{control.errors.minlength.actualLength}} characters long, but it must be atleast
                 {{control.errors.minlength.requiredLength}} characters long
             </p>
         </section>
 
-        <section *ngIf="control.errors.maxlength" class="error-message">
+        <section *ngIf="control.errors.maxlength && control.touched" class="error-message">
             <p>
                 Value is {{control.errors.maxlength.actualLength}} characters long, but it must be atmost
                 {{control.errors.maxlength.requiredLength}} characters long
             </p>
         </section>
 
-        <section *ngIf="control.errors.pattern" class="error-message">
+        <section *ngIf="control.errors.pattern && control.touched" class="error-message">
             <p>Enter only digits from 0 to 9</p>
         </section>
     </ng-container>

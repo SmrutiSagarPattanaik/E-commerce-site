@@ -14,11 +14,4 @@ export class PasswordInputFieldComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-  showErrors() {
-    const { dirty, touched, errors } = this.control;
-
-    return dirty && touched && errors;
-  }
-
 }
