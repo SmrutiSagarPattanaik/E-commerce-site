@@ -1,0 +1,13 @@
+<form [formGroup]="categoryForm" (ngSubmit)="onClickDisplayItems()">
+    <label class="label">Select category</label>
+    <section class="category-dropdown">
+        <select formControlName="category">
+            <ng-container *ngFor="let category of listOfCategories">
+                <option value="category">{{category}}</option>
+            </ng-container>
+        </select>
+    </section>
+    <button type="submit">
+        Display Items
+    </button>
+</form>

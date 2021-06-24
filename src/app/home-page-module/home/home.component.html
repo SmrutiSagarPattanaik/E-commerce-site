@@ -13,7 +13,7 @@
         Cart ({{totalItemsCountInCart}})
     </button>
 
-    <app-search-bar (emitItemName)="storeItemName($event)"></app-search-bar>
+    <app-search-bar (emitItemCategory)="storeItemCategory($event)"></app-search-bar>
 
-    <app-list-of-items [filterByItemName]="searchItemName"></app-list-of-items>
+    <app-list-of-categories [filterByCategory]="searchItemCategory"></app-list-of-categories>
 </div>

@@ -1,0 +1,92 @@
+<div class="primary-container" *ngIf="!categoryCreated">
+    <form [formGroup]="categoryForm" (ngSubmit)="onAdd1Item()">
+        <label>Enter Category* :</label>
+        <section>
+            <input type="text" formControlName="category"
+            [ngClass]="{'error-field': categoryForm.get('category').errors && categoryForm.get('category').touched}">
+        </section>
+
+        <p *ngIf="categoryForm.get('category').errors && categoryForm.get('category').touched" class="error-messages">
+            category is requred.
+        </p>
+
+        <button type="submit" [disabled]="categoryForm.invalid">
+            Add 1 Item
+        </button>
+
+        <p *ngIf="!enableItemAdd && categoryForm.valid">
+            Category already exists
+        </p>
+    </form>
+
+    <ng-container *ngIf="enableItemAdd">
+        <form [formGroup]="itemForm" (ngSubmit)="onClickSave()">
+            <label class="label">Enter unique Id* :</label>
+            <section>
+                <input type="text" formControlName="id"
+                    [ngClass]="{'error-field': itemForm.get('id').errors && itemForm.get('id').touched}">
+            </section>
+
+            <p *ngIf="itemForm.get('id').errors && itemForm.get('id').touched" class="error-messages">
+                id is requred.
+            </p>
+
+            <label class="label">Enter name of Item* :</label>
+            <section>
+                <input type="text" formControlName="name"
+                    [ngClass]="{'error-field': itemForm.get('name').errors && itemForm.get('name').touched}">
+            </section>
+
+            <p *ngIf="itemForm.get('name').errors && itemForm.get('name').touched" class="error-messages">
+                name is requred.
+            </p>
+
+            <label class="label">Enter description of Item* :</label>
+            <section>
+                <textarea formControlName="description" rows="10" cols="20"
+                    [ngClass]="{'error-field': itemForm.get('description').errors && itemForm.get('description').touched}"></textarea>
+            </section>
+
+            <p *ngIf="itemForm.get('description').errors && itemForm.get('description').touched" class="error-messages">
+                description is requred.
+            </p>
+
+            <label class="label">Enter price of Item* :</label>
+            <section>
+                <input type="number" step="any" formControlName="price"
+                    [ngClass]="{'error-field': itemForm.get('price').errors && itemForm.get('price').touched}">
+            </section>
+
+            <p *ngIf="itemForm.get('price').errors && itemForm.get('price').touched" class="error-messages">
+                price is requred.
+            </p>
+
+
+            <label class="label">Enter Image Url* :</label>
+            <section>
+                <input type="text" formControlName="imageUrl"
+                    [ngClass]="{'error-field': itemForm.get('imageUrl').errors && itemForm.get('imageUrl').touched}">
+            </section>
+
+            <p *ngIf="itemForm.get('imageUrl').errors && itemForm.get('imageUrl').touched" class="error-messages">
+                imageUrl is requred.
+            </p>
+
+            <button type="submit" [disabled]="itemForm.invalid">
+                Save
+            </button>
+        </form>
+    </ng-container>
+</div>
+
+<ng-container *ngIf="categoryCreated">
+    <p>
+        Category is created successfully!
+    </p>
+    <p>
+        Click the below button to create another category
+    </p>
+    <button type="button" (click)="onClickCreateNewCategory()">
+        create new category
+    </button>
+</ng-container>

@@ -1,4 +1,4 @@
-<div class="primary-container">
+<div class="primary-container" *ngIf="!noItems">
     <button class="go-back-button" (click)="goToBackPage()">
         Back
     </button>
@@ -24,3 +24,9 @@
             (click)="sendItemToCart([itemDetails.id, itemDetails.name, itemDetails.price, 1])">Add to cart>></button>
     </section>
 </div>
+
+<ng-container *ngIf="noItems">
+    <p>
+        No such item exists.
+    </p>
+</ng-container>

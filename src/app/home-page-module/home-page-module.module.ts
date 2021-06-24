@@ -5,7 +5,8 @@ import { HomePageModuleRoutingModule } from './home-page-module-routing.module';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+  ],
   imports: [
     CommonModule,
     HomePageModuleRoutingModule

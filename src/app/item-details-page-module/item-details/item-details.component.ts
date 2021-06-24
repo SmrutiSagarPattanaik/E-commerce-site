@@ -1,7 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-import { itemDetailsList } from '../../../assets/all-items';
 import { CheckoutCartService } from '../../checkout-cart.service';
 import { Router } from '@angular/router';
 
@@ -15,18 +14,23 @@ export class ItemDetailsComponent implements OnInit, OnDestroy {
 
   private sub: any;
   selectedItemId = '';
-  username='';
-  listOfItems = itemDetailsList;
+  userName = '';
+  listOfItems = JSON.parse(localStorage.getItem('listOfItems'));
   totalItemsCountInCart: number;
+  noItems=false;
 
-  constructor(private router: Router, private route: ActivatedRoute, private _location: Location, private cart: CheckoutCartService) { }
+  constructor(private router: Router, 
+    private route: ActivatedRoute, 
+    private _location: Location, 
+    private cart: CheckoutCartService) { }
 
   ngOnInit(): void {
+    !this.listOfItems ? this.noItems=true : this.noItems=false; 
     this.sub = this.route.params.subscribe((params) => {
       this.selectedItemId = params['id'];
-      this.username = params['username'];
     });
     this.cart.allItemsCountInCart.subscribe(count => this.totalItemsCountInCart = count);
+    this.userName = localStorage.getItem('currentUser');
     this.authenticateUser();
   }
 
@@ -35,12 +39,10 @@ export class ItemDetailsComponent implements OnInit, OnDestroy {
   }
 
   authenticateUser() {
-    let userDetails = JSON.parse(localStorage.getItem(this.username));
-    if (!userDetails || !userDetails['isSignedIn']) {
+    if (!this.userName) {
       this.router.navigate(['/error']);
     }
   }
-
 
   goToBackPage() {
     this._location.back();
@@ -59,7 +61,4 @@ export class ItemDetailsComponent implements OnInit, OnDestroy {
     }
     this.cart.addItemToCart(itemObj);
   }
-
-
-
 }

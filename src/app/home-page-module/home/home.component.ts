@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CheckoutCartService } from '../../checkout-cart.service';
 
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -9,7 +10,7 @@ import { CheckoutCartService } from '../../checkout-cart.service';
 })
 export class HomeComponent implements OnInit {
 
-  searchItemName = '';
+  searchItemCategory = '';
 
   userName = '';
 
@@ -18,30 +19,25 @@ export class HomeComponent implements OnInit {
   constructor(private router: Router, private cart: CheckoutCartService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.route.params.subscribe((params) => {
-      this.userName = params['username'];
-    });
+    this.userName = localStorage.getItem('currentUser');
     this.authenticateUser();
   }
 
   authenticateUser() {
-    let userDetails = JSON.parse(localStorage.getItem(this.userName));
-    if (!userDetails || !userDetails['isSignedIn']) {
+    if (!this.userName) {
       this.router.navigate(['/error']);
     }
   }
 
 
   onClickSignOutLink() {
-    let userDetails = JSON.parse(localStorage.getItem(this.userName));
-    userDetails['isSignedIn'] = false;
-    localStorage.setItem(userDetails['user'], JSON.stringify(userDetails));
+    localStorage.removeItem('currentUser');
     this.router.navigateByUrl('');
   }
 
 
-  storeItemName(itemName: string) {
-    this.searchItemName = itemName;
+  storeItemCategory(itemCategory: string) {
+    this.searchItemCategory = itemCategory;
   }
 
   goToCart() {

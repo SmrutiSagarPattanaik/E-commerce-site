@@ -72,14 +72,13 @@ export class UserRegistrationFormComponent implements OnInit {
     console.log('The user has successfully registered');
     let userName = this.userRegisterForm.get('userName').value;
     let password = this.userRegisterForm.get('password').value;
-    let isSignedIn = false;
-    let userDetails: {user:string, pass:string, isSignedIn: boolean};
+    let userDetails: {user:string, pass:string, role:string};
 
     if(!localStorage.getItem(`${userName}`)) {
       userDetails = {
         user: userName,
         pass: password,
-        isSignedIn: isSignedIn
+        role: 'user'
       }
       localStorage.setItem(userName,JSON.stringify(userDetails));
       this.router.navigate(['/signIn']);
@@ -99,7 +98,7 @@ export class UserRegistrationFormComponent implements OnInit {
       city: ['', 
       [
         Validators.required,
-        Validators.pattern(/^[A-Za-z0-9\s]+$/) 
+        Validators.pattern(/^[A-Za-z\s]+$/) 
       ]
     ]
     })
@@ -118,8 +117,46 @@ export class UserRegistrationFormComponent implements OnInit {
       this.addresses.removeAt(index);
     } 
   }
+
   addAddress() {
     this.addresses.push(this.addAddressFormGroup());
   }
 
+  errorFieldStreetName(index:number) {
+    return this.addresses.controls[index]['controls']['street'].errors && 
+    this.addresses.controls[index]['controls']['street'].touched
+  }
+
+  errorFieldCityName(index:number) {
+    return this.addresses.controls[index]['controls']['city'].errors && 
+    this.addresses.controls[index]['controls']['city'].touched
+  }
+
+  isErrorStreetName(index:number) {
+    return this.addresses.controls[index]['controls']['street'].errors;
+  }
+
+  isErrorCityName(index:number) {
+    return this.addresses.controls[index]['controls']['city'].errors;
+  }
+
+  showRequiredErrorStreet(index:number) {
+    return this.addresses.controls[index]['controls']['street'].errors.required && 
+    this.addresses.controls[index]['controls']['street'].touched;
+  }
+
+  showPatternErrorStreet(index:number) {
+    return this.addresses.controls[index]['controls']['street'].errors.pattern && 
+    this.addresses.controls[index]['controls']['street'].touched;
+  }
+
+  showRequiredErrorCity(index:number) {
+    return this.addresses.controls[index]['controls']['city'].errors.required && 
+    this.addresses.controls[index]['controls']['city'].touched;
+  }
+
+  showPatternErrorCity(index:number) {
+    return this.addresses.controls[index]['controls']['city'].errors.pattern && 
+    this.addresses.controls[index]['controls']['city'].touched;
+  }
 }

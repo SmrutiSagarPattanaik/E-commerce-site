@@ -1,0 +1,40 @@
+<div class="primary-container">
+    <button type="button" (click)="onClickSignOutButton()">
+        sign Out
+    </button>
+    <form [formGroup]="actionsForm" (ngSubmit)="onClickProceed()">
+        <p>Choose an option and click proceed:</p>
+
+        <section class="options">
+            <input type="radio" formControlName="actions" value="a">
+            <label>Add to a category</label>
+        </section>
+
+        <section class="options">
+            <input type="radio" formControlName="actions" value="b">
+            <label>Remove from a category</label>
+        </section>
+
+        <section class="options">
+            <input type="radio" formControlName="actions" value="c">
+            <label>Add new category</label>
+        </section>
+        
+        <button type="submit" [disabled]="actionsForm.invalid">
+            proceed
+        </button>
+    </form>
+
+    <ng-container *ngIf="chosenOption==='b'">
+        <app-remove-from-category-page></app-remove-from-category-page>
+    </ng-container>
+
+    <ng-container *ngIf="chosenOption==='c'">
+        <app-add-new-category-page></app-add-new-category-page>
+    </ng-container>
+
+    <ng-container *ngIf="chosenOption==='a'">
+        <app-add-to-category-page></app-add-to-category-page>
+    </ng-container>
+
+</div>

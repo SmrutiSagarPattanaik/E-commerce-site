@@ -1,0 +1,11 @@
+<div class="primary-container" *ngIf="!noCategories">
+    <ng-container *ngFor="let category of listOfCategories | filterItemCategories : filterByCategory">
+        <a [routerLink]="'./'+category" class="category-names">{{category}}</a>
+    </ng-container>
+</div>
+
+<ng-container *ngIf="noCategories">
+    <p>
+        There are no categories available.
+    </p>
+</ng-container>

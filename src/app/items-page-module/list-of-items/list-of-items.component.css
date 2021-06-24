@@ -30,3 +30,16 @@
   .show-more-details:hover {
     color: #e90000;
   }
+
+  .go-to-back-page-button {
+    background-color: #ffffff;
+    margin-bottom: 20px;
+    font: normal bold 18px Roboto, sans-serif;
+    color: #0e12fd;
+  }
+
+  .go-to-back-page-button:hover {
+    background-color: #0e12fd;
+    color: #000000;
+    cursor: pointer;
+  }

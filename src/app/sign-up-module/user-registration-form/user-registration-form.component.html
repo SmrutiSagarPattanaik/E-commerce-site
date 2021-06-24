@@ -35,18 +35,12 @@
                 <section class="street-city">
                     <section class="street-label-field">
                         <label>Street</label>
-                        <input type="text" formControlName="street" [ngClass]="
-                        {'error-in-input':
-                        this.addresses.controls[i]['controls']['street'].errors && 
-                        this.addresses.controls[i]['controls']['street'].touched}">
+                        <input type="text" formControlName="street" [ngClass]="{'error-in-input': errorFieldStreetName(i)}">
                     </section>
                     
                     <section class="city-label-field">
                         <label>City</label>
-                        <input type="text" formControlName="city" [ngClass]="
-                        {'error-in-input':
-                        this.addresses.controls[i]['controls']['city'].errors && 
-                        this.addresses.controls[i]['controls']['city'].touched}">
+                        <input type="text" formControlName="city" [ngClass]="{'error-in-input': errorFieldCityName(i)}">
                     </section>
 
                     <section class="add-remove-street-city-buttons">
@@ -61,31 +55,26 @@
                 </section>
             </ng-container>
 
-            <ng-container *ngIf="this.addresses.controls[i]['controls']['street'].errors">
-                <p *ngIf="this.addresses.controls[i]['controls']['street'].errors.required && 
-                this.addresses.controls[i]['controls']['street'].touched" class="street-name-error">
+            <ng-container *ngIf="isErrorStreetName(i)">
+                <p *ngIf="showRequiredErrorStreet(i)" class="street-name-error">
                     Value is required for street.
                 </p>
-                <p *ngIf="this.addresses.controls[i]['controls']['street'].errors.pattern && 
-                this.addresses.controls[i]['controls']['street'].touched" class="street-name-error">
+                <p *ngIf="showPatternErrorStreet(i)" class="street-name-error">
                     Dont use special characters for street name.
                 </p>
             </ng-container>
 
-            <ng-container *ngIf="this.addresses.controls[i]['controls']['city'].errors">
-                <p *ngIf="this.addresses.controls[i]['controls']['city'].errors.required && 
-                this.addresses.controls[i]['controls']['city'].touched" class="city-name-error">
+            <ng-container *ngIf="isErrorCityName(i)">
+                <p *ngIf="showRequiredErrorCity(i)" class="city-name-error">
                     Value is required for city.
                 </p>
-                <p *ngIf="this.addresses.controls[i]['controls']['city'].errors.pattern && 
-                this.addresses.controls[i]['controls']['city'].touched" class="city-name-error">
-                   Dont use special characters for city name.
+                <p *ngIf="showPatternErrorCity(i)" class="city-name-error">
+                   Dont use special characters or numbers for city name.
                 </p>
             </ng-container>
 
         </ng-container>
     </ng-container>
-
 
     <button type="submit" [disabled]="userRegisterForm.invalid" class="register-button">
         Register
@@ -98,14 +87,4 @@
     <button (click)="onClickingResetButton()" type="button" class="reset-button">
         Reset
     </button>
-
 </form>
-
-<!-- The below lines are for debug purposes -->
-
-<!-- <hr>
-<div>Form Controls: {{userRegisterForm.value | json}}</div>
-
-<div>Form is valid: {{userRegisterForm.valid}}</div>
-
-<div>Errors around form:{{userRegisterForm.errors | json}}</div> -->

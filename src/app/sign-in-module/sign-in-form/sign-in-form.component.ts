@@ -11,7 +11,8 @@ export class SignInFormComponent implements OnInit {
 
   signInForm = this.formBuilder.group({
     userName: ['', Validators.required],
-    password: ['', Validators.required]
+    password: ['', Validators.required],
+    role: ['', Validators.required]
   })
 
   UserExist: boolean;
@@ -29,6 +30,7 @@ export class SignInFormComponent implements OnInit {
   signIn() {
     let userDetails = JSON.parse(localStorage.getItem(this.signInForm.get('userName').value));
     let enteredPassWord = this.signInForm.get('password').value;
+    let role = this.signInForm.get('role').value;
     let dataBasePassword = '';
 
     if (!userDetails) {
@@ -36,12 +38,17 @@ export class SignInFormComponent implements OnInit {
     } else {
       dataBasePassword = userDetails['pass'];
       if (dataBasePassword === enteredPassWord) {
-        userDetails['isSignedIn'] = true;
-        localStorage.setItem(userDetails['user'],JSON.stringify(userDetails));
-        this.router.navigate(['./home', `${userDetails['user']}`]);
-      } else {
+        if (role === 'user' && role === userDetails['role']) {
+          localStorage.setItem('currentUser', userDetails['user']);
+          this.router.navigate(['./home']);
+        } else if (role === 'admin' && role === userDetails['role']) {
+          localStorage.setItem('currentUser', userDetails['user']);
+          this.router.navigate(['./actions']);
+        }
         this.UserExist = false;
+        return;
       }
+      this.UserExist = false;
     }
   }
 }
