@@ -68,7 +68,7 @@
                     <input type="file" formControlName="file" (change)="onFileChange($event)"
                         [ngClass]="{'error-field': itemForm.get('file').errors && itemForm.get('file').touched}">
                 </section>
-                <p *ngIf="itemForm.get('file').errors && itemForm.get('file').touched" class="error-messages">
+                <p *ngIf="itemForm.get('file').errors && itemForm.get('file').dirty && itemForm.get('file').touched" class="error-messages">
                     image is requred.
                 </p>
 

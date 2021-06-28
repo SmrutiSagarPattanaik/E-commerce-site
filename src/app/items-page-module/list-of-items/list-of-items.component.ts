@@ -73,6 +73,7 @@ export class ListOfItemsComponent implements OnInit {
       listOfItems.push(addItem);
       localStorage.setItem('listOfItems',JSON.stringify(listOfItems));
       this.listOfItems = JSON.parse(localStorage.getItem('listOfItems'));
+      this.noItems=false;
       this.showAddItemModal = !this.showAddItemModal;
       return;
     }
