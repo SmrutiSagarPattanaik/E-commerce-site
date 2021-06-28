@@ -1,0 +1,83 @@
+<div (click)="onCloseClick()" class="ui dimmer visible active">
+    <div class="ui modal visible active" (click)="$event.stopPropagation()">
+        <i (click)="onCloseClick()" class="close icon"></i>
+        <div class="header">
+            Addition of {{addNew}}
+        </div>
+
+        <form *ngIf="addNew==='category'" [formGroup]="categoryForm" (ngSubmit)="onAddCategoryButtonClick()">
+            <div class="content">
+                <label>Enter Category :</label>
+                <section>
+                    <input type="text" formControlName="category"
+                        [ngClass]="{'error-field': categoryForm.get('category').errors && categoryForm.get('category').touched}">
+                </section>
+
+                <p *ngIf="categoryForm.get('category').errors && categoryForm.get('category').touched"
+                    class="error-messages">
+                    category is requred.
+                </p>
+
+                <p *ngIf="!enableCategoryAdd && categoryForm.valid">
+                    Category already exists
+                </p>
+            </div>
+            <div class="actions">
+                <button type="submit" [disabled]="categoryForm.invalid" class="ui button">
+                    Add Category
+                </button>
+            </div>
+        </form>
+
+        <form *ngIf="addNew==='item'" [formGroup]="itemForm" (ngSubmit)="onAddItemButtonClick()" class="item-form">
+            <div class="content">
+
+                <label class="label">Enter name of Item* :</label>
+                <section>
+                    <input type="text" formControlName="name"
+                        [ngClass]="{'error-field': itemForm.get('name').errors && itemForm.get('name').touched}">
+                </section>
+                <p *ngIf="itemForm.get('name').errors && itemForm.get('name').touched" class="error-messages">
+                    name is requred.
+                </p>
+                <p *ngIf="!enableItemAdd && itemForm.valid">
+                    Item name already exists.
+                </p>
+
+                <label class="label">Enter description of Item* :</label>
+                <section>
+                    <textarea formControlName="description" rows="10" cols="20"
+                        [ngClass]="{'error-field': itemForm.get('description').errors && itemForm.get('description').touched}"></textarea>
+                </section>
+                <p *ngIf="itemForm.get('description').errors && itemForm.get('description').touched"
+                    class="error-messages">
+                    description is requred.
+                </p>
+
+                <label class="label">Enter price of Item* :</label>
+                <section>
+                    <input type="number" step="any" formControlName="price"
+                        [ngClass]="{'error-field': itemForm.get('price').errors && itemForm.get('price').touched}">
+                </section>
+                <p *ngIf="itemForm.get('price').errors && itemForm.get('price').touched" class="error-messages">
+                    price is requred.
+                </p>
+
+                <label class="label">Upload item image* :</label>
+                <section>
+                    <input type="file" formControlName="file" (change)="onFileChange($event)"
+                        [ngClass]="{'error-field': itemForm.get('file').errors && itemForm.get('file').touched}">
+                </section>
+                <p *ngIf="itemForm.get('file').errors && itemForm.get('file').touched" class="error-messages">
+                    image is requred.
+                </p>
+
+            </div>
+            <div class="actions">
+                <button type="submit" [disabled]="itemForm.invalid" class="ui button">
+                    Add Item
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

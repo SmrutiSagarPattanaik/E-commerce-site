@@ -1,5 +1,31 @@
-.category-names {
-    text-decoration: none;
-    display: block;
+.category-name-and-button {
+    margin-bottom: 20px;
     font: normal normal 25px Roboto,sans-serif;
+}
+
+.category-name-and-button a {
+    text-decoration: none;
+    color: #000000;
+}
+
+.category-name-and-button button {
+    background-color: #ffffff;
+    margin-left: 20px;
+    font: normal normal 15px Roboto,sans-serif;
+}
+
+.category-name-and-button button:hover {
+    cursor: pointer;
+    background-color: #9fa4ec;
+}
+
+.add-new-category-button {
+    margin-bottom: 20px;
+    background-color: #ffffff;
+    font: normal normal 15px Roboto,sans-serif;
+}
+
+.add-new-category-button:hover {
+    cursor: pointer;
+    background-color: #9fa4ec;
 }

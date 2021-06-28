@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AdminActionsModuleModule } from './admin-actions-module/admin-actions-module.module';
 import { CartPageModuleModule } from './cart-page-module/cart-page-module.module';
 import { HomePageModuleModule } from './home-page-module/home-page-module.module';
 import { ItemDetailsPageModuleModule } from './item-details-page-module/item-details-page-module.module';
@@ -30,12 +29,6 @@ const routes: Routes = [
     loadChildren: ()=>
     import('../app/cart-page-module/cart-page-module.module').
     then((m)=>CartPageModuleModule)
-  },
-  {
-    path: "actions",
-    loadChildren: ()=>
-    import('../app/admin-actions-module/admin-actions-module.module').
-    then((m)=>AdminActionsModuleModule)
   },
   {
     path: "home/:category",

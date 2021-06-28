@@ -76,6 +76,14 @@
         </ng-container>
     </ng-container>
 
+    <section class="role-section">
+        <label>Sign Up as *: </label>
+        <select formControlName="role">
+            <option value="buyer">Buyer</option>
+            <option value="seller">Seller</option>
+        </select>
+    </section>
+
     <button type="submit" [disabled]="userRegisterForm.invalid" class="register-button">
         Register
     </button>

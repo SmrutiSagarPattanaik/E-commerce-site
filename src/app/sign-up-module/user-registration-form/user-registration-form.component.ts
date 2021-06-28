@@ -51,6 +51,8 @@ export class UserRegistrationFormComponent implements OnInit {
         Validators.maxLength(10),
         Validators.pattern(/^([0-9]){10}$/)
       ]],
+    
+    role: ['', Validators.required],
 
     addresses: this.formBuilder.array([
       this.addAddressFormGroup()
@@ -71,14 +73,16 @@ export class UserRegistrationFormComponent implements OnInit {
   onFormSubmission() {
     console.log('The user has successfully registered');
     let userName = this.userRegisterForm.get('userName').value;
-    let password = this.userRegisterForm.get('password').value;
+    let password = window.btoa(this.userRegisterForm.get('password').value);
+    let role = this.userRegisterForm.get('role').value;
+
     let userDetails: {user:string, pass:string, role:string};
 
     if(!localStorage.getItem(`${userName}`)) {
       userDetails = {
         user: userName,
         pass: password,
-        role: 'user'
+        role
       }
       localStorage.setItem(userName,JSON.stringify(userDetails));
       this.router.navigate(['/signIn']);

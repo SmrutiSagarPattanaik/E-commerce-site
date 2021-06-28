@@ -5,3 +5,8 @@
 .error-field {
     border-color: #ff0000;
 }
+
+.content,.actions {
+    text-align: center;
+    margin: 20px 0;
+}

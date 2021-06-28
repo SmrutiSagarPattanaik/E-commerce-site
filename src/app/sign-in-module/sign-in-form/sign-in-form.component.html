@@ -16,14 +16,6 @@
         Check userName or password. If new user then sign up.
     </p>
 
-    <section class="role-section">
-        <label>Sign In as *: </label>
-        <select formControlName="role">
-            <option value="user">User</option>
-            <option value="admin">Admin</option>
-        </select>
-    </section>
-
     <button [disabled]="signInForm.invalid" class="sign-in-button" type="submit">
         Sign In
     </button>

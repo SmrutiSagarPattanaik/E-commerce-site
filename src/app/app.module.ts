@@ -19,10 +19,8 @@ import { DateInputFieldComponent } from './sign-up-module/date-input-field/date-
 import { ErrorPageComponent } from './error-module/error-page/error-page.component';
 import { FilterItemCategoriesPipe } from './filters/filter-item-categories.pipe';
 import { ListOfCategoriesComponent } from '../app/home-page-module/list-of-categories/list-of-categories.component';
-import { ActionsPageComponent } from './admin-actions-module/actions-page/actions-page.component';
-import { AddToCategoryPageComponent } from './admin-actions-module/add-to-category-page/add-to-category-page.component';
-import { RemoveFromCategoryPageComponent } from './admin-actions-module/remove-from-category-page/remove-from-category-page.component';
-import { AddNewCategoryPageComponent } from './admin-actions-module/add-new-category-page/add-new-category-page.component';
+import { ConfirmDeleteModalComponent } from './modals/confirm-delete-modal/confirm-delete-modal.component';
+import { ItemOrCategoryModalComponent } from './modals/item-or-category-modal/item-or-category-modal.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,10 +40,8 @@ import { AddNewCategoryPageComponent } from './admin-actions-module/add-new-cate
     ErrorPageComponent,
     FilterItemCategoriesPipe,
     ListOfCategoriesComponent,
-    ActionsPageComponent,
-    AddToCategoryPageComponent,
-    RemoveFromCategoryPageComponent,
-    AddNewCategoryPageComponent
+    ConfirmDeleteModalComponent,
+    ItemOrCategoryModalComponent
   ],
   imports: [
     BrowserModule,

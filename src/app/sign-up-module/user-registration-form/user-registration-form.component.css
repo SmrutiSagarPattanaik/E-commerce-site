@@ -90,3 +90,9 @@
 .error-in-input {
     border-color: #ff0000;
 }
+
+.role-section {
+    text-align: center;
+    margin-bottom: 20px;
+    font: normal normal 15px Roboto,sans-serif;
+}

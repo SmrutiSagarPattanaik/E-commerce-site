@@ -17,18 +17,21 @@ export class ItemDetailsComponent implements OnInit, OnDestroy {
   userName = '';
   listOfItems = JSON.parse(localStorage.getItem('listOfItems'));
   totalItemsCountInCart: number;
-  noItems=false;
+  noItems = false;
 
-  constructor(private router: Router, 
-    private route: ActivatedRoute, 
-    private _location: Location, 
+  constructor(private router: Router,
+    private route: ActivatedRoute,
+    private _location: Location,
     private cart: CheckoutCartService) { }
 
   ngOnInit(): void {
-    !this.listOfItems ? this.noItems=true : this.noItems=false; 
     this.sub = this.route.params.subscribe((params) => {
       this.selectedItemId = params['id'];
     });
+
+    !this.listOfItems || !this.doesIdExist() ?
+      this.noItems = true : this.noItems = false;
+
     this.cart.allItemsCountInCart.subscribe(count => this.totalItemsCountInCart = count);
     this.userName = localStorage.getItem('currentUser');
     this.authenticateUser();
@@ -36,6 +39,16 @@ export class ItemDetailsComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.sub.unsubscribe();
+  }
+
+  doesIdExist() {
+    console.log(this.selectedItemId);
+    for (let index = 0; index < this.listOfItems.length; index++) {
+      if (this.listOfItems[index]['id'].toLowerCase() === this.selectedItemId.toLowerCase()) {
+        return true;
+      }
+    }
+    return false;
   }
 
   authenticateUser() {

@@ -1,6 +1,32 @@
+<button 
+*ngIf="isEditPossible"
+class="add-new-category-button"
+(click)="onClickAddNewCategoryButton()">
+    Add new category
+</button>
+
+<ng-container *ngIf="showAddCategoryModal">
+    <app-item-or-category-modal 
+    addNew="category"
+    (closeModal)="closeAdditionModal($event)">
+    </app-item-or-category-modal>
+</ng-container>
+
+<ng-container *ngIf="showDeleteConfirmModal">
+    <app-confirm-delete-modal (closeModal)="closeDeleteConfirmModal($event)"></app-confirm-delete-modal>
+</ng-container>
+
+
 <div class="primary-container" *ngIf="!noCategories">
     <ng-container *ngFor="let category of listOfCategories | filterItemCategories : filterByCategory">
-        <a [routerLink]="'./'+category" class="category-names">{{category}}</a>
+        <section class="category-name-and-button">
+            <a [routerLink]="'./'+category">{{category}}</a>
+            <ng-container *ngIf="isEditPossible">
+                <button (click)="onDeleteButtonClick(category)">
+                    delete
+                </button>
+            </ng-container>
+        </section>
     </ng-container>
 </div>
 

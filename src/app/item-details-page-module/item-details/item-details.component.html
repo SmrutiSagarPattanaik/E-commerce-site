@@ -1,16 +1,15 @@
-<div class="primary-container" *ngIf="!noItems">
-    <button class="go-back-button" (click)="goToBackPage()">
-        Back
-    </button>
+<button class="go-back-button" (click)="goToBackPage()">
+    Back
+</button>
 
+<div class="primary-container" *ngIf="!noItems">
     <button class="go-to-cart-button" (click)="goToCart()">
         Cart ({{totalItemsCountInCart}})
     </button>
 
     <section class="single-item-content" *ngFor="
     let itemDetails of listOfItems
-      | filterItemDetails: selectedItemId
-  ">
+      | filterItemDetails: selectedItemId">
         <div class="image-content">
             <img [src]="itemDetails.imageUrl" alt="Item image" />
         </div>

@@ -1,0 +1,16 @@
+<div (click)="onCloseClick()" class="ui dimmer visible active">
+    <div class="ui modal visible active" (click)="$event.stopPropagation()">
+        <i class="close icon" (click)="onCloseClick()"></i>
+        <div class="header">
+            Deletion
+        </div>
+        <div class="content">
+            <p>
+                Are you sure ?
+            </p>
+        </div>
+        <div class="actions">
+            <button (click)="onYesClick()" class="ui button">YES</button>
+        </div>
+    </div>
+</div>

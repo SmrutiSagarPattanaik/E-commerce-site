@@ -43,3 +43,25 @@
     color: #000000;
     cursor: pointer;
   }
+
+  .add-new-item-button {
+    background-color: #ffffff;
+    font: normal normal 18px Roboto,sans-serif;
+    margin-left: 25px;
+  }
+
+  .add-new-item-button:hover {
+    cursor: pointer;
+    background-color: #9fa4ec;
+  }
+
+  .name-show-details button {
+    background-color: #ffffff;
+    font: normal normal 18px Roboto,sans-serif;
+    margin-left: 25px;
+  }
+
+  .name-show-details button:hover {
+    cursor: pointer;
+    background-color: #9fa4ec;
+  }
