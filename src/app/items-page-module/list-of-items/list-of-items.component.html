@@ -2,17 +2,12 @@
     Back
 </button>
 
-<button 
-*ngIf="isEditPossible"
-class="add-new-item-button"
-(click)="onClickAddNewItemButton()">
+<button *ngIf="isEditPossible" class="add-new-item-button" (click)="onClickAddNewItemButton()">
     Add new Item
 </button>
 
 <ng-container *ngIf="showAddItemModal">
-    <app-item-or-category-modal 
-    addNew="item"
-    (closeModal)="closeAdditionModal($event)">
+    <app-item-or-category-modal addNew="item" (closeModal)="closeAdditionModal($event)">
     </app-item-or-category-modal>
 </ng-container>
 
@@ -24,7 +19,7 @@ class="add-new-item-button"
     <ng-container *ngFor="let item of listOfItems | filterItems: filterByItemCategory">
         <section class="single-item-content">
             <div class="image-content">
-                <img [src]="item.imageUrl" alt="Item image" />
+                <img [src]="transform(item.imageUrl)" alt="Item image" />
             </div>
             <div class="name-show-details">
                 <p class="item-name">Name: {{ item.name }}</p>

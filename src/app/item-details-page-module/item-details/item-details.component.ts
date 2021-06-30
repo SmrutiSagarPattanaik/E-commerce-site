@@ -4,14 +4,12 @@ import { Location } from '@angular/common';
 import { CheckoutCartService } from '../../checkout-cart.service';
 import { Router } from '@angular/router';
 
-
 @Component({
   selector: 'app-item-details',
   templateUrl: './item-details.component.html',
   styleUrls: ['./item-details.component.css']
 })
 export class ItemDetailsComponent implements OnInit, OnDestroy {
-
   private sub: any;
   selectedItemId = '';
   userName = '';

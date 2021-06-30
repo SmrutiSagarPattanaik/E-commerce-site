@@ -1,5 +1,5 @@
-import { Component, OnInit, Input, ElementRef, Output, EventEmitter  } from '@angular/core';
-import { FormBuilder, Validators} from '@angular/forms';
+import { Component, OnInit, Input, ElementRef, Output, EventEmitter } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 
 interface itemObj {
   id: string;
@@ -18,6 +18,7 @@ export class ItemOrCategoryModalComponent implements OnInit {
 
   @Input() addNew = '';
   @Output() closeModal = new EventEmitter<any>();
+  uploadedImageUrl: string;
   enableCategoryAdd = true;
   enableItemAdd = true;
   itemCategory = '';
@@ -31,12 +32,12 @@ export class ItemOrCategoryModalComponent implements OnInit {
 
   itemForm = this.formBuilder.group({
     description: ['', Validators.required],
-    file: ['',Validators.required],
+    file: ['', Validators.required],
     name: ['', Validators.required],
     price: [null, Validators.required],
   })
 
-  constructor( private formBuilder:FormBuilder, private element:ElementRef) { }
+  constructor(private formBuilder: FormBuilder, private element: ElementRef) { }
 
   ngOnInit(): void {
   }
@@ -61,43 +62,41 @@ export class ItemOrCategoryModalComponent implements OnInit {
   }
 
   onFileChange(event) {
-    if(event.target.files.length>0) {
+    if (event.target.files.length > 0) {
       let file = event.target.files[0];
-      if(file['type']==='image/jpeg' || file['type']==='image/png') {
-        let reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onload = function() {
-          let imgTag=document.createElement('img');
-          imgTag.setAttribute("src",String(reader.result));
-          document.querySelector('app-item-or-category-modal .item-form .content').appendChild(imgTag);
-        }
-      }
+      const url = window.webkitURL.createObjectURL(file)
+      this.uploadedImageUrl = url;
+      console.log(url);
+      let imgTag = document.createElement('img');
+      imgTag.src = this.uploadedImageUrl;
+      document.querySelector('app-item-or-category-modal .item-form .content').appendChild(imgTag);
     }
   }
 
   onAddItemButtonClick() {
     let itemName = this.itemForm.get('name').value.toLowerCase();
 
-    if(this.listOfItems) {
-      for(let index=0;index<this.listOfItems.length;index++) {
-        if(this.listOfItems[index]['name'].toLowerCase() === itemName) {
+    if (this.listOfItems) {
+      for (let index = 0; index < this.listOfItems.length; index++) {
+        if (this.listOfItems[index]['name'].toLowerCase() === itemName) {
           this.enableItemAdd = false;
           return;
-        } 
+        }
       }
       this.enableItemAdd = true;
     }
 
     let itemPrice = this.itemForm.get('price').value;
     let itemDescription = this.itemForm.get('description').value;
-    let itemId = 'eItem'+ Math.floor(new Date().getTime()/1000);
+    let itemId = 'eItem' + Math.floor(new Date().getTime() / 1000);
+    let uploadedImageUrl = this.uploadedImageUrl;
 
     this.itemObj = {
       id: itemId,
       name: itemName,
       description: itemDescription,
       price: itemPrice,
-      imageUrl: '',
+      imageUrl: uploadedImageUrl,
     }
 
     this.closeModal.emit(this.itemObj);
