@@ -2,13 +2,11 @@
     <section class="label-and-input-field-section">
         <label>{{label}}</label>
 
-        <input type="text" [formControl]="control" class="input-field" [ngClass]="{'error-in-input': control.touched && control.errors}">
+        <input type="text" [formControl]="control" class="input-field"
+            [ngClass]="{'error-in-input': control.touched && control.errors}">
     </section>
 
     <ng-container *ngIf="control.errors">
-        <section *ngIf="control.touched && control.errors.required" class="error-message">
-            <p>Value is required</p>
-        </section>
         <section *ngIf="control.errors.pattern && control.touched" class="error-message">
             <p>Enter birthdate in dd-mm-yyyy format</p>
         </section>

@@ -25,7 +25,7 @@
         Password and confirmation password need to match
     </p>
 
-    <app-date-input-field label="BirthDate*" [control]="userRegisterForm.get('birthdate')"></app-date-input-field>
+    <app-date-input-field label="BirthDate" [control]="userRegisterForm.get('birthdate')"></app-date-input-field>
 
     <label class="label-for-address">Address*</label>
     <ng-container formArrayName="addresses">
@@ -35,9 +35,10 @@
                 <section class="street-city">
                     <section class="street-label-field">
                         <label>Street</label>
-                        <input type="text" formControlName="street" [ngClass]="{'error-in-input': errorFieldStreetName(i)}">
+                        <input type="text" formControlName="street"
+                            [ngClass]="{'error-in-input': errorFieldStreetName(i)}">
                     </section>
-                    
+
                     <section class="city-label-field">
                         <label>City</label>
                         <input type="text" formControlName="city" [ngClass]="{'error-in-input': errorFieldCityName(i)}">
@@ -47,7 +48,7 @@
                         <button type="button" (click)="addAddress()" class="add-address-button">
                             +
                         </button>
-    
+
                         <button [disabled]="!i" type="button" (click)="removeAddress(i)" class="remove-address-button">
                             -
                         </button>
@@ -69,7 +70,7 @@
                     Value is required for city.
                 </p>
                 <p *ngIf="showPatternErrorCity(i)" class="city-name-error">
-                   Dont use special characters or numbers for city name.
+                    Dont use special characters or numbers for city name.
                 </p>
             </ng-container>
 
