@@ -11,7 +11,7 @@
     let itemDetails of listOfItems
       | filterItemDetails: selectedItemId">
         <div class="image-content">
-            <img [src]="itemDetails.imageUrl" alt="Item image" />
+            <img [src]="transform(itemDetails.imageUrl)" alt="Item image" />
         </div>
 
         <p>Unique Id: {{ itemDetails.id }}</p>

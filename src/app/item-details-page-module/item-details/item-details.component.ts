@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { CheckoutCartService } from '../../checkout-cart.service';
 import { Router } from '@angular/router';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-item-details',
@@ -20,7 +21,8 @@ export class ItemDetailsComponent implements OnInit, OnDestroy {
   constructor(private router: Router,
     private route: ActivatedRoute,
     private _location: Location,
-    private cart: CheckoutCartService) { }
+    private cart: CheckoutCartService,
+    private sanitizer: DomSanitizer) { }
 
   ngOnInit(): void {
     this.sub = this.route.params.subscribe((params) => {
@@ -71,5 +73,9 @@ export class ItemDetailsComponent implements OnInit, OnDestroy {
       count: cartItem[3]
     }
     this.cart.addItemToCart(itemObj);
+  }
+
+  transform(url) {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
 }
